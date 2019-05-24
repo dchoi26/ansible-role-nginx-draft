@@ -3,6 +3,8 @@ galaxy_info:
   role_name: nginx draft
   author: Niko Smeds
   description: An ugly nginx role that could use some linting
+  license: BSD
+  min_ansible_version: 1.2
 
   platforms:
     - name: EL
