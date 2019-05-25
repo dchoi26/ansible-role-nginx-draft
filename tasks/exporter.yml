@@ -1,0 +1,41 @@
+---
+- name: Create nginx exp system group
+  group:
+    name: nginx-exp
+    state: present
+
+- name: Create nginx system user member of nginx exp group
+  user:
+    name: nginx-exp
+    group: nginx-exp
+
+- name: Download nginx exporter
+  get_url:
+    url: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.3.0/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
+    dest: /home/dchoi/Downloads/nginxexporter
+
+- name: Extract nginx exporter
+  unarchive:
+    src: /home/dchoi/Downloads/nginxexporter
+    dest: /home/dchoi/Downloads/nginxexporter
+
+- name: Create nginx exporter service file
+  template:
+    src: /home/dchoi/github/ansible-role-nginx-draft/tasks
+    dest: /etc/systemd/system/nginx_exporter.service
+
+- name: Start Exporter
+  systemd:
+    state: started
+    name: nginx_exporter
+
+- name: Check that you can connect (GET) to a page and it returns a status 200
+  uri:
+    url: http://localhost:9113/metrics
+        return_content: yes
+   register: this
+   failed_when: "'nginx_up 1' not in this.content"
+
+- name: Check that you can connect (GET) to a page and it returns a status 200
+  uri:
+    url: http://localhost:80
