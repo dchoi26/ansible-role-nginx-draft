@@ -12,12 +12,12 @@
 - name: Download nginx exporter
   get_url:
     url: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.3.0/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
-    dest: /home/nginx-exp/Downloads/nginxexporter
+    dest: /home/nginx-exp/
 
 - name: Extract nginx exporter
   unarchive:
-    src: /home/nginx-exp/Downloads/nginxexporter
-    dest: /home/nginx-exp/Downloads/nginxexporter
+    src: /home/nginx-exp/nginx-prometheus-exporter-0.3.0-linux-amd64
+    dest: /home/nginx-exp/
 
 - name: Create nginx exporter service file
   template:
