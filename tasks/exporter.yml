@@ -16,7 +16,7 @@
 
 - name: Extract nginx exporter
   unarchive:
-    src: /home/nginx-exp/nginx-prometheus-exporter-0.3.0-linux-amd64
+    src: /home/nginx-exp/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
     dest: /home/nginx-exp/
 
 - name: Create nginx exporter service file
