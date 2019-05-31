@@ -16,7 +16,7 @@
 
 - name: Extract nginx exporter
   unarchive:
-    src: /home/vagrant/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
+    src: /home/vagrant/nginx-prometheus-exporter-0.3.0-linux-amd64
     dest: /home/vagrant/
 
 - name: Create nginx exporter service file
