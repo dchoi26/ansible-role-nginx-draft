@@ -12,17 +12,18 @@
 - name: Download nginx exporter
   get_url:
     url: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.3.0/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
-    dest: /home/vagrant/
+    dest: /home/nginx-exp/
 
 - name: Extract nginx exporter
   become: true
   unarchive:
-    src: /home/vagrant/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
-    dest: /home/vagrant/
+    src: /home/nginx-exp/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
+    dest: /home/nginx-exp/
+    remote_src: yes
 
 - name: Create nginx exporter service file
   template:
-    src: /home/vagrant/github/ansible-role-nginx-draft/template/nginx_exporter.service
+    src: /home/nginx-exp/github/ansible-role-nginx-draft/template/nginx_exporter.service
     dest: /etc/systemd/system/nginx_exporter.service
 
 - name: Start Exporter
