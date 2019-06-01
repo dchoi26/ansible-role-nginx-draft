@@ -42,4 +42,4 @@
 - name: fail playbook when GET request to port 80 (web server default home page) does not return status code 200.
   uri:
     url: http://localhost:80
-  failed_when: "webpage.status != 200"
+  failed_when: "this.status != 200"
