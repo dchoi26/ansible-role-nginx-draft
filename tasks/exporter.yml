@@ -18,7 +18,7 @@
   become: true
   unarchive:
     src: /home/nginx-exp/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
-    dest: /home/nginx-exp/
+    dest: /usr/local/bin/
     remote_src: yes
 
 - name: Create nginx exporter service file
